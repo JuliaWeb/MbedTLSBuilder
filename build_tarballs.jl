@@ -9,109 +9,10 @@ sources = [
 
 # Bash recipe for building across all platforms
 script = raw"""
-if [ $target != "i686-w64-mingw32" ]; then
 cd $WORKSPACE/srcdir
 cd mbedtls/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DUSE_SHARED_MBEDTLS_LIBRARY=On
 make && make install
-
-else
-cd $WORKSPACE/srcdir
-cd mbedtls/
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/x86_64-linux-gnu/x86_64-linux-gnu.toolchain WINDOWS_BUILDE=1  -DUSE_SHARED_MBEDTLS_LIBRARY=On
-export WINDOWS_BUILD=1
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/x86_64-linux-gnu/x86_64-linux-gnu.toolchain WINDOWS_BUILD=1  -DUSE_SHARED_MBEDTLS_LIBRARY=On
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/x86_64-linux-gnu/x86_64-linux-gnu.toolchain  -DUSE_SHARED_MBEDTLS_LIBRARY=On WINDOWS_BUILD=1
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/x86_64-linux-gnu/x86_64-linux-gnu.toolchain  -DUSE_SHARED_MBEDTLS_LIBRARY=On
-make WINDOWS_BUILD=1 && make install
-cd $prefix/lib
-ls
-cd /workspace/srcdir/mbedtls/
-ls
-cd include
-ls
-cd mbedtls/
-ls
-vim config.h 
-nano config.h 
-vi config.h 
-ls
-cd ..
-ls
-cd ..
-ls
-vi Makefile 
-vi CMakeLists.txt 
-ls
-cat cmake_install.cmake 
-ls
-cd CMakeFiles/
-ls
-cd ..
-ls
-
-fi
-
-if [ $target = "x86_64-apple-darwin14" ]; then
-cd $WORKSPACE/srcdir
-cd /opt
-ls
-cd x86_64-apple-darwin14/
-ls
-cd x86_64-apple-darwin14
-ls
-cd lib
-ls
-cd ..
-ls
-cd ..
-ls
-cd MacOSX10.10.sdk/
-ls
-cd usr
-ls
-cd bin
-ls
-cd ..
-ls
-cd libexec/
-ls
-cd ..
-ls
-cd share
-ls
-cd ..
-cd include/
-ls
-ls
-cd ..
-ls
-cd ..
-cd ..
-ls
-cd sahre
-ls
-cd share
-ls
-cd ..
-ls
-cd libexec/
-ls
-cd gcc
-ls
-cd x86_64-apple-darwin14/
-ls
-cd 7.3.0/
-ls
-cd ../..
-cd ..
-cd ..
-ls
-cat x86_64-apple-darwin14
-cat x86_64-apple-darwin14.toolchain 
-
-fi
-
 """
 
 # These are the platforms we will build for by default, unless further
@@ -122,7 +23,9 @@ platforms = [
     BinaryProvider.Linux(:aarch64, :glibc),
     BinaryProvider.Linux(:armv7l, :glibc),
     BinaryProvider.Linux(:powerpc64le, :glibc),
-    BinaryProvider.Windows(:x86_64)
+    BinaryProvider.Windows(:x86_64),
+    BinaryProvider.Windows(:i686),
+    BinaryProvider.MacOS()
 ]
 
 # The products that we will ensure are always built
