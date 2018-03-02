@@ -82,7 +82,9 @@ else
 end
 
 if !isempty(get(ENV,"TRAVIS_TAG",""))
+    repo_name = ENV["TRAVIS_REPO_SLUG"]
+    tag_name = ENV["TRAVIS_TAG"]
+    product_hashes = product_hashes_from_github_release(repo_name, tag_name; verbose=verbose)
     print_buildjl(pwd(), products, product_hashes,
         "https://github.com/quinnj/MbedTLSBuilder/releases/download/$(ENV["TRAVIS_TAG"])")
 end
-
