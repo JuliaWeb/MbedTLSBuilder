@@ -82,7 +82,7 @@ else
 end
 
 if !isempty(get(ENV,"TRAVIS_TAG",""))
-    print_buildjl(pwd(), products, hashes,
+    print_buildjl(pwd(), products, product_hashes,
         "https://github.com/quinnj/MbedTLSBuilder/releases/download/$(ENV["TRAVIS_TAG"])")
 end
 
