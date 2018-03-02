@@ -12,6 +12,11 @@ cd $WORKSPACE/srcdir
 cd mbedtls/
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DUSE_SHARED_MBEDTLS_LIBRARY=On
 make && make install
+if [ $target == "x86_64-w64-mingw32" ]; then
+    cp $prefix/lib/*.dll $prefix/bin/.
+elif [ $target == "i686-w64-mingw32" ]; then
+    cp $prefix/lib/*.dll $prefix/bin/.
+fi
 """
 
 # These are the platforms we will build for by default, unless further
