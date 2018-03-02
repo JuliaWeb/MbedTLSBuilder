@@ -4,7 +4,6 @@ using BinaryBuilder
 sources = [
     "https://github.com/ARMmbed/mbedtls.git" =>
     "d1236a790ea0c685e136e9a72b4666882119d3f6",
-
 ]
 
 # Bash recipe for building across all platforms
@@ -18,14 +17,14 @@ make && make install
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = [
-    BinaryProvider.Linux(:i686, :glibc),
-    BinaryProvider.Linux(:x86_64, :glibc),
-    BinaryProvider.Linux(:aarch64, :glibc),
-    BinaryProvider.Linux(:armv7l, :glibc),
-    BinaryProvider.Linux(:powerpc64le, :glibc),
-    BinaryProvider.Windows(:x86_64),
-    BinaryProvider.Windows(:i686),
-    BinaryProvider.MacOS()
+    Linux(:i686, :glibc),
+    Linux(:x86_64, :glibc),
+    Linux(:aarch64, :glibc),
+    Linux(:armv7l, :glibc),
+    Linux(:powerpc64le, :glibc),
+    Windows(:x86_64),
+    Windows(:i686),
+    MacOS()
 ]
 
 # The products that we will ensure are always built
