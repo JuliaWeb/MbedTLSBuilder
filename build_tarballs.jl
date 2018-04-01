@@ -16,6 +16,8 @@ if [ $target == "x86_64-w64-mingw32" ]; then
     cp $prefix/lib/*.dll $prefix/bin/.
 elif [ $target == "i686-w64-mingw32" ]; then
     cp $prefix/lib/*.dll $prefix/bin/.
+else
+    cd $prefix/lib; for f in $(find . -name '*.so'); do strip $f ; done
 fi
 """
 
