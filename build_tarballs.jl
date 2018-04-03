@@ -3,7 +3,7 @@ using BinaryBuilder
 # Collection of sources required to build MbedTLS
 sources = [
     "https://github.com/ARMmbed/mbedtls.git" =>
-    "d1236a790ea0c685e136e9a72b4666882119d3f6",
+    "a5d1a8fd09120f0602fbe51cb714b3f0d58781b6",
 ]
 
 # Bash recipe for building across all platforms
