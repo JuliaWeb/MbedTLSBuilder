@@ -35,5 +35,5 @@ deploy:
     file: products/*
     skip_cleanup: true
     on:
-        repo: quinnj/MbedTLSBuilder
+        repo: JuliaWeb/MbedTLSBuilder
         tags: true
