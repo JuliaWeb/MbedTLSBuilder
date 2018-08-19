@@ -1,10 +1,10 @@
 using BinaryBuilder
 
 # Collection of sources required to build MbedTLS
-# mbedtls release: 2.11.0
+# mbedtls release: 2.12.0
 sources = [
     "https://github.com/ARMmbed/mbedtls.git" =>
-    "91aee7921a4de7065c9f87afd5f5bb33ee831969",
+    "294ad8d725c159400d10599cb26a4579a2d39956",
 ]
 
 # Bash recipe for building across all platforms
