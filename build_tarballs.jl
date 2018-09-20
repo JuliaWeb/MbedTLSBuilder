@@ -11,7 +11,7 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir
 cd mbedtls/
-mkdir -p $prefix
+mkdir -p $prefix/lib
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DUSE_SHARED_MBEDTLS_LIBRARY=On
 make -j${nproc} && make install
 if [ $target == "x86_64-w64-mingw32" ]; then
