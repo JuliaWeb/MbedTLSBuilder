@@ -9,23 +9,15 @@ sources = [
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd $WORKSPACE/srcdir
-cd mbedtls/
+cd $WORKSPACE/srcdir/mbedtls
 mkdir -p $prefix/lib
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DUSE_SHARED_MBEDTLS_LIBRARY=On
 make -j${nproc} && make install
-if [ $target == "x86_64-w64-mingw32" ]; then
-    cp $prefix/lib/*.dll $prefix/bin/.
-elif [ $target == "i686-w64-mingw32" ]; then
-    cp $prefix/lib/*.dll $prefix/bin/.
-else
-    cd $prefix/lib; for f in $(find . -name '*.so'); do strip $f ; done
-fi
 """
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = Platform[Linux(:i686, :glibc), Linux(:x86_64, :glibc), Linux(:aarch64, :glibc), Linux(:armv7l, :glibc, :eabihf), Linux(:powerpc64le, :glibc), MacOS(:x86_64), FreeBSD(:x86_64), Windows(:i686), Windows(:x86_64)]
+platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
