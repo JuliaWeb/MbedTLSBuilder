@@ -4,7 +4,7 @@ using BinaryBuilder
 # mbedtls release: 2.13.1
 sources = [
     "https://github.com/ARMmbed/mbedtls.git" =>
-    "53546ea099f6f53d0be653a64accd250e170337f",
+    "fb1972db23da39bd11d4f9c9ea6266eee665605b",
 ]
 
 # Bash recipe for building across all platforms
@@ -32,4 +32,4 @@ dependencies = [
 
 # Build the tarballs, and possibly a `build.jl` as well.
 #build_tarballs(ARGS, src_name, src_version, sources, script, platforms, products, dependencies; kwargs...)
-build_tarballs(ARGS, "MbedTLS", v"2.13.1", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, "MbedTLS", v"2.16.0", sources, script, platforms, products, dependencies)
