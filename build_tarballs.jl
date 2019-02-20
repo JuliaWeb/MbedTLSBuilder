@@ -1,7 +1,7 @@
 using BinaryBuilder
 
 # Collection of sources required to build MbedTLS
-# mbedtls release: 2.13.1
+# mbedtls release: 2.16.0
 sources = [
     "https://github.com/ARMmbed/mbedtls.git" =>
     "fb1972db23da39bd11d4f9c9ea6266eee665605b",
@@ -22,8 +22,8 @@ platforms = supported_platforms()
 # The products that we will ensure are always built
 products(prefix) = [
     LibraryProduct(prefix, "libmbedcrypto", :libmbedcrypto),
-    LibraryProduct(prefix, "libmbedtls", :libmbedtls),
-    LibraryProduct(prefix, "libmbedx509", :libmbedx509)
+    LibraryProduct(prefix, "libmbedx509", :libmbedx509),
+    LibraryProduct(prefix, "libmbedtls", :libmbedtls)
 ]
 
 # Dependencies that must be installed before this package can be built
