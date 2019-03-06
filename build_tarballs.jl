@@ -1,10 +1,10 @@
 using BinaryBuilder
 
 # Collection of sources required to build MbedTLS
-# mbedtls release: 2.16.0
+# mbedtls release: 2.7.9
 sources = [
     "https://github.com/ARMmbed/mbedtls.git" =>
-    "fb1972db23da39bd11d4f9c9ea6266eee665605b",
+    "3187e7ca986fe199313343b0c810e41b543ef78a",
 ]
 
 # Bash recipe for building across all platforms
@@ -21,8 +21,8 @@ platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libmbedcrypto", :libmbedcrypto),
     LibraryProduct(prefix, "libmbedx509", :libmbedx509),
+    LibraryProduct(prefix, "libmbedcrypto", :libmbedcrypto),
     LibraryProduct(prefix, "libmbedtls", :libmbedtls)
 ]
 
@@ -32,4 +32,4 @@ dependencies = [
 
 # Build the tarballs, and possibly a `build.jl` as well.
 #build_tarballs(ARGS, src_name, src_version, sources, script, platforms, products, dependencies; kwargs...)
-build_tarballs(ARGS, "MbedTLS", v"2.16.0", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, "MbedTLS", v"2.7.9", sources, script, platforms, products, dependencies)
